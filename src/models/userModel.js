@@ -1,6 +1,5 @@
 const mysql = require('mysql');
-const { ObjectId } = mongoose.Schema;
-
+const { ObjectId } = mysql.Schema;
 const userSchema = new mysql.Schema(
     {
         idUser:{
