@@ -1,0 +1,59 @@
+# Version to be interpreted by the docker-compose CLI
+version: '3.5'
+# services called by docker-compose
+services:
+  # name of the service for mysql
+  mysql-database:
+    container_name: mysql-database
+    image: mysql:8.0
+    # commands to be executed at launch
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    # host port and container port
+    ports:
+      - "3306:3306"
+    # environment variables
+    environment:
+      - MYSQL_DATABASE=reactproject
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=users_service
+      - MYSQL_PASSWORD=123
+    # volumes host folder to container folder
+    volumes:
+      - /docker/mysql/datadir:/var/lib/mysql
+      - ./docker/mysql/dump/reactproject.sql:/docker-entrypoint-initdb.d/reactproject.sql
+  # name of the service for node
+  node:
+    image: node:14.5.0
+    working_dir: /app/src
+    # commands to be executed at launch
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm start'
+    # host port and container port
+    ports:
+     - "8201:8201"
+    depends_on:
+     - mysql-database
+    restart: on-failure
+    # environment variables
+    environment:
+     - DATABASE_HOST=mysql-database
+    # volumes host folder to container folder
+    volumes:
+     - ./src:/app/src
+  # name of the service for phpmyadmin
+  pma:
+    image: phpmyadmin:latest
+    restart: on-failure
+    # environment variables
+    environment:
+      - PMA_HOST=mysql-database
+      - PMA_USER=users_service
+      - PMA_PASSWORD=123
+      - MYSQL_ROOT_PASSWORD=1234
+      - PMA_ARBITRARY=1
+    # host port and container port
+    ports:
+      - "8301:80"
