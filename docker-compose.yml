@@ -20,7 +20,7 @@ services:
       - MYSQL_PASSWORD=123
     # volumes host folder to container folder
     volumes:
-      - /docker/mysql/datadir:/var/lib/mysql
+      - ./docker/mysql/datadir:/var/lib/mysql
       - ./docker/mysql/dump/reactproject.sql:/docker-entrypoint-initdb.d/reactproject.sql
   # name of the service for node
   node:
