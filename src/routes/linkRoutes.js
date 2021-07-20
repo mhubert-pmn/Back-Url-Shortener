@@ -5,6 +5,6 @@ module.exports = (server) => {
         .get(linkController.getAllLinks)
         .post(linkController.addALink);
 
-    server.route('/users/id_user/links')
+    server.route('/users/:id_user/links')
         .get(linkController.getUserLinks);
 }
