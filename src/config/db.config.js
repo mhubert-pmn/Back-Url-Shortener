@@ -3,7 +3,7 @@ module.exports = {
     USER: "root",
     PASSWORD: "1234",
     DB: "reactproject",
-    port: "3306",
+    port: 3306,
     dialect: "mysql",
     pool: {
       max: 5,
