@@ -60,6 +60,13 @@ exports.signin = (req, res) => {
         expiresIn: 86400 // 24 hours
       });
 
+      res.status(200).send({
+        idUser: user.idUser,
+        pseudo: user.pseudo,
+        email: user.email,
+        accessToken: token
+      });
+
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
