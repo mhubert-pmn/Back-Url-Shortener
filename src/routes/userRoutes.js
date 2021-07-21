@@ -1,9 +1,6 @@
-const userController = require('../controllers/userController');
+const userController = require('../controllers/authController');
 
 module.exports = (server) => {
-    server.route('/users')
-        .post(userController.addAUser);
-
-    server.route('/users/:id_user')
-        .get(userController.getAUser);
+    server.post('/user/signup', userController.signup);
+    server.post('/user/signin', userController.signin);
 }

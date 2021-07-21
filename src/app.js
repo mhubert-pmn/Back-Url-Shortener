@@ -17,4 +17,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+const userRoutes = require('./routes/userRoutes');
+userRoutes(app);
+
+/* const linkRoutes = require('./routes/linkRoutes');
+linkRoutes(app); */
+
 app.listen(port);
