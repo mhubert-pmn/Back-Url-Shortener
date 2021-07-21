@@ -1,9 +1,8 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "mysql-database",
     USER: "root",
     PASSWORD: "1234",
     DB: "reactproject",
-    port: 3306,
     dialect: "mysql",
     pool: {
       max: 5,

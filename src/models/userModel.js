@@ -4,7 +4,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       idUser: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        primaryKey: true
       },
       email: {
         type: Sequelize.STRING

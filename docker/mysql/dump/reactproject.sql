@@ -12,15 +12,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Table `reactproject`.`user`
+-- Table `reactproject`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `reactproject`.`user` (
+CREATE TABLE IF NOT EXISTS `reactproject`.`users` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `pseudo` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `password` VARCHAR(255) NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
   PRIMARY KEY (`idUser`),
-  UNIQUE INDEX `iduser_UNIQUE` (`idUser` ASC))
+  UNIQUE INDEX `idUser_UNIQUE` (`idUser` ASC))
 ENGINE = InnoDB;
 
 
@@ -32,12 +34,14 @@ CREATE TABLE IF NOT EXISTS `reactproject`.`link` (
   `originLink` VARCHAR(400) NULL,
   `customLink` VARCHAR(45) NULL,
   `user_idUser` INT NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
   PRIMARY KEY (`idLink`, `user_idUser`),
   UNIQUE INDEX `idlink_UNIQUE` (`idLink` ASC),
   INDEX `fk_link_user_idx` (`user_idUser` ASC),
   CONSTRAINT `fk_link_user`
     FOREIGN KEY (`user_idUser`)
-    REFERENCES `reactproject`.`user` (`idUser`)
+    REFERENCES `reactproject`.`users` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

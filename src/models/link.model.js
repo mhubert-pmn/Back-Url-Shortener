@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Link = sequelize.define("link", {
       idLink: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        primaryKey: true
       },
       originLink: {
         type: Sequelize.STRING
