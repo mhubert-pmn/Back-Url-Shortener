@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       customLink: {
         type: Sequelize.STRING
       },
-      idUser: {
+      user_idUser: {
         type: Sequelize.INTEGER
       }
     });
