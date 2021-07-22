@@ -17,6 +17,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
+    const link = {
+        user_idUser: req.body.user_idUser,
+        customLink: req.body.customLink,
+        originLink: req.body.originLink
+      };
     // Save Tutorial in the database
     Link.create(link)
       .then(data => {
