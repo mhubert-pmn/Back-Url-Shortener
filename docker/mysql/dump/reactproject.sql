@@ -27,9 +27,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `reactproject`.`link`
+-- Table `reactproject`.`links`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `reactproject`.`link` (
+CREATE TABLE IF NOT EXISTS `reactproject`.`links` (
   `idLink` INT NOT NULL AUTO_INCREMENT,
   `originLink` VARCHAR(400) NULL,
   `customLink` VARCHAR(45) NULL,
