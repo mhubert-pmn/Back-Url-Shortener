@@ -7,6 +7,10 @@ const Op = db.Sequelize.Op;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+const token = jwt.sign({ id: user.idUser }, config.secret, {
+    expiresIn: 86400 // 24 hours
+  });
+
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({
@@ -24,8 +28,9 @@ exports.signup = (req, res) => {
       } else{
         res.status(201);
         res.json({
-            message: `The user ${user.pseudo} has been created`
-            });
+           message: `The user ${user.pseudo} has been created`,
+           accessToken: token
+        });
       }
     })
     .catch(error => {
@@ -56,9 +61,6 @@ exports.signin = (req, res) => {
         });
       }
 
-      const token = jwt.sign({ id: user.idUser }, config.secret, {
-        expiresIn: 86400 // 24 hours
-      });
 
       res.status(200).send({
         idUser: user.idUser,
