@@ -14,7 +14,7 @@ exports.signup = (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   })
-    .then((user, error) => {
+    .then((user, error, token) => {
       if(error) {
         res.status(500);
         console.log(error);
@@ -24,7 +24,8 @@ exports.signup = (req, res) => {
       } else{
         res.status(201);
         res.json({
-            message: `The user ${user.pseudo} has been cretaed`
+            message: `The user ${user.pseudo} has been cretaed`,
+            token
             });
       }
     })
