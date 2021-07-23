@@ -28,9 +28,9 @@ exports.signup = (req, res) => {
       } else{
         res.status(201);
         res.json({
-            message: `The user ${user.pseudo} has been cretaed`,
-            accessToken: token
-            });
+           message: `The user ${user.pseudo} has been created`,
+           accessToken: token
+        });
       }
     })
     .catch(error => {

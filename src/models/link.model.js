@@ -1,19 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("users", {
-      pseudo: {
-        type: Sequelize.STRING
-      },
-      idUser: {
+    const Link = sequelize.define("link", {
+      idLink: {
         type: Sequelize.INTEGER,
         primaryKey: true
       },
-      email: {
+      originLink: {
         type: Sequelize.STRING
       },
-      password: {
+      customLink: {
         type: Sequelize.STRING
+      },
+      user_idUser: {
+        type: Sequelize.INTEGER
       }
     });
   
-    return User;
+    return Link;
   };
