@@ -30,7 +30,7 @@ exports.signup = (req, res) => {
         res.json({
             message: `The user ${user.pseudo} has been created`,
             accessToken: token
-            });
+        });
       }
     })
     .catch(error => {
